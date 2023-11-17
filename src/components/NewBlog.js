@@ -1,13 +1,66 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export class NewBlog extends Component {
-    render() {
-        return (
-            <p className="text-center">
-                Add New Blog
-            </p>
-        )
+function NewBlog() {
+
+    const [title, setTitle] = useState('')
+    const [body, setBody] = useState('')
+    const [author, setAuthor] = useState('')
+    const navigate = useNavigate()
+    const whenSubmit = (e) => {
+        e.preventDefault();
+        const myData = { title, body, author }
+        const url = 'http://localhost:8000/blogs'
+        fetch(url,
+            {
+                method: 'POST',
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify(myData),
+            }).then(() => {
+                console.log('New Blog Added');
+                navigate('/')
+            })
     }
-}
+    return (
+        <div className="container">
+            <h1 className='font-bold text-3xl text-center mt-8'>Add New Blog</h1>
+            <div className="flex items-center justify-center p-4 mt-2">
+                <form className="mt-4" onSubmit={whenSubmit}>
+                    <label className="block" htmlFor="title">Title:</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="w-auto p-2 border border-gray-200 rounded focus:outline-none focus:border-blue-500"
+                    />
+                    <label className="block" htmlFor="body">Body:</label>
+                    <input
+                        type="text"
+                        id="body"
+                        name="body"
+                        value={body}
+                        onChange={(e) => setBody(e.target.value)}
+                        className="w-auto p-2 border border-gray-200 rounded focus:outline-none focus:border-blue-500"
+                    />
+                    <label className="block" htmlFor="author">Author:</label>
+                    <input
+                        type="text"
+                        id="author"
+                        name="author"
+                        value={author}
+                        onChange={(e) => setAuthor(e.target.value)}
+                        className="w-auto p-2 border border-gray-200 rounded focus:outline-none focus:border-blue-500"
+                    />
+                    <button type="submit" className="bg-slate-900 text-white p-2 rounded hover:bg-green-700">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
+};
 
-export default NewBlog
+export default NewBlog;
