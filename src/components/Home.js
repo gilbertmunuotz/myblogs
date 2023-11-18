@@ -1,3 +1,4 @@
+import Footer from './Footer'
 import MyblogsR from './MyblogsR'
 import UseCostomHook from './UseCostomHook'
 
@@ -6,10 +7,11 @@ function Home() {
     const { blogs, message, error } = UseCostomHook(url)
 
     return (
-        <div className='home mx-8'>
-            {error && <div>{error}</div>}
-            {message && <div>Loading...</div>}
+        <div className='home'>
+            {error && <div className='mx-8'>{error}</div>}
+            {message && <div className='mx-8'>Loading...</div>}
             {blogs && <MyblogsR blogs={blogs} title='Welcome' />}
+            <Footer />
         </div>
     )
 }

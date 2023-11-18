@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function MyblogsR({ blogs, title }) {
     return (
-        <div className="MyblogsR">
+        <div className="MyblogsR mx-8 my-4">
             <h1 className="text-4xl font-serif">{title}</h1>
             {blogs.map((blog, index) => (
                 <div key={index} className="wrapper hover:bg-slate cursor-pointer">
