@@ -9,7 +9,7 @@ function Footer() {
                 <div className="row mx-6">
                     <div className="col l6 s12">
                         <h5 className="white-text text-2xl font-semibold">ViseStone Blogs</h5>
-                        <p className="grey-text text-lighten-4 mt-2 first-letter:font-bold first-letter:text-2xl ml-4">Subscribe to our blog for the latest news, tips, and insights.</p>
+                        <p className="grey-text text-lighten-4 mt-2 first-letter:font-bold first-letter:text-2xl">Subscribe to our blog for the latest news, tips, and insights.</p>
                     </div>                    
                     <div className="col l4 offset-l2 s12">
                         <h5 className="white-text">Visit Us</h5>
