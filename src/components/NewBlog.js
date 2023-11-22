@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 function NewBlog() {
@@ -24,11 +25,14 @@ function NewBlog() {
     }
     return (
         <div className="container">
-            <h1 className='font-bold text-3xl text-center mt-8'>Add New Blog</h1>
+            <motion.h1 className='font-bold text-3xl text-center mt-8'
+                initial={{ x: '-100vw' }}
+                animate={{ x: 0 }}>Add New Blog</motion.h1>
             <div className="flex items-center justify-center p-4 mt-2">
                 <form className="mt-4" onSubmit={whenSubmit}>
                     <label className="block" htmlFor="title">Title:</label>
                     <input
+                        required
                         type="text"
                         id="title"
                         name="title"
@@ -38,6 +42,7 @@ function NewBlog() {
                     />
                     <label className="block" htmlFor="body">Body:</label>
                     <input
+                        required
                         type="text"
                         id="body"
                         name="body"
@@ -47,6 +52,7 @@ function NewBlog() {
                     />
                     <label className="block" htmlFor="author">Author:</label>
                     <input
+                        required
                         type="text"
                         id="author"
                         name="author"
@@ -54,13 +60,16 @@ function NewBlog() {
                         onChange={(e) => setAuthor(e.target.value)}
                         className="w-auto p-2 border border-gray-200 rounded focus:outline-none focus:border-blue-500"
                     />
-                    <button type="submit" className="bg-slate-900 text-white p-2 rounded hover:bg-green-700">
-                        Submit
-                    </button>
+                    <motion.button type="submit" className="bg-slate-900 text-white p-2 rounded hover:bg-green-700"
+                        whileHover={{ scale: 1.1 }}
+                        initial={{ x: '100vw' }}
+                        animate={{ x: 0 }}>Submit
+                    </motion.button>
                 </form>
             </div>
-        </div>
+        </div >
     );
-};
+}
+
 
 export default NewBlog;
