@@ -1,9 +1,19 @@
 import Footer from './Footer'
 import { motion } from "framer-motion";
+
+const myvariants = {
+    before: {
+        x: '-100vw'
+    },
+    after: {
+        x: 0
+    }
+}
+
 function About() {
     return (
         <div className='About'>
-            <motion.div className="flex justify-center p-4" initial={{ x: '-100vw' }} animate={{ x: 0 }}>
+            <motion.div className="flex justify-center p-4" variants={myvariants} initial="before" animate="after">
                 <div className="flex flex-col justify-center items-center text-center">
                     <div className="text-white text-3xl md:text-5xl font-medium  my-2">What People are Saying</div>
                     <div className="text-white md:text-xl  my-2 w-3/4">TailBlocks has inspired tens of thousands of Front-end Web
